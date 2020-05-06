@@ -1,6 +1,21 @@
 <template>
   <div>
-    <h1>Filter data by country</h1>
+    <v-row align="center">
+      <v-col cols="4" offset-md="4">
+        <v-select
+          :items="countries"
+          item-text="Country"
+          item-value="slug"
+          menu-props="auto"
+          label="Select Country"
+          hide-details
+          single-line
+        ></v-select>
+      </v-col>
+    </v-row>
+    <v-row align="center">
+      <v-col cols="4" offset-md="4"> </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -9,12 +24,18 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'FilterCovid',
-  methods: {
-    ...mapActions(['getSummary']),
+  data() {
+    return {
+      country: null,
+      countries: countries,
+    };
   },
-  computed: mapGetters(['summary']),
+  methods: {
+    ...mapActions(['getCountries']),
+  },
+  computed: mapGetters(['countries']),
   created() {
-    this.getSummary();
+    this.getCountries();
   },
 };
 </script>
