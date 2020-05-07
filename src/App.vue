@@ -28,6 +28,7 @@
     <v-content>
       <FilterCovid />
       <SummaryCards />
+      <SummaryChart />
     </v-content>
   </v-app>
 </template>
@@ -35,13 +36,14 @@
 <script>
 import FilterCovid from './components/FilterCovid.vue';
 import SummaryCards from './components/SummaryCards.vue';
+import SummaryChart from './components/SummaryChart.vue';
 
 export default {
   name: 'App',
-
   components: {
     FilterCovid,
     SummaryCards,
+    SummaryChart,
   },
 
   data: () => ({

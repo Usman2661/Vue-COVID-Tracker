@@ -51,7 +51,9 @@ const actions = {
       const response = await axios.get(
         `https://restcountries.eu/rest/v2/alpha/${ISO}`
       );
-      commit('setCountryFlag', response.data);
+
+      const countryData = response.data;
+      commit('setCountryInfo', countryData);
     } catch (err) {
       console.log(err);
     }
