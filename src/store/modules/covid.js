@@ -18,12 +18,15 @@ const actions = {
       const response = await axios.get('https://api.covid19api.com/summary');
 
       if (byCountry) {
-        console.log(byCountry);
         const summaryData = response.data.Countries;
-        console.log(summaryData);
-      }
 
-      commit('setSummary', response.data.Global);
+        let summary = summaryData.find((o) => o.Country === byCountry);
+
+        console.log(summary);
+        commit('setSummary', summary);
+      } else {
+        commit('setSummary', response.data.Global);
+      }
     } catch (err) {
       console.log(err);
     }

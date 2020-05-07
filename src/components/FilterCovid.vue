@@ -2,7 +2,8 @@
   <div>
     <v-row align="center">
       <v-col cols="4" offset-md="4">
-        <v-select
+        <v-autocomplete
+          v-on:change="changeCountry"
           :items="countries"
           item-text="Country"
           item-value="slug"
@@ -10,7 +11,7 @@
           label="Select Country"
           hide-details
           single-line
-        ></v-select>
+        ></v-autocomplete>
       </v-col>
     </v-row>
     <v-row align="center">
@@ -24,18 +25,18 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'FilterCovid',
-  data() {
-    return {
-      country: null,
-      countries: countries,
-    };
-  },
   methods: {
-    ...mapActions(['getCountries']),
+    ...mapActions(['getCountries', 'getSummary']),
+    changeCountry(country) {
+      this.getSummary(country);
+    },
   },
-  computed: mapGetters(['countries']),
+  computed: {
+    ...mapGetters(['countries', 'summary']),
+  },
   created() {
     this.getCountries();
+    this.getSummary();
   },
 };
 </script>

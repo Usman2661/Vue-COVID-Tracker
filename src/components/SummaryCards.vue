@@ -16,15 +16,7 @@
 
           <v-card-text>
             <v-row align="center">
-              <h2 cols="6" offset="4">{{ summary.Global.TotalConfirmed }}</h2>
-
-              <!-- <v-col cols="6">
-                <v-img
-                  src="https://cdn.vuetifyjs.com/images/cards/sun.png"
-                  alt="Sunny image"
-                  width="92"
-                ></v-img>
-              </v-col> -->
+              <h2 cols="6" offset="4">{{ summary.TotalConfirmed }}</h2>
             </v-row>
           </v-card-text>
         </v-card>
@@ -44,15 +36,7 @@
 
           <v-card-text>
             <v-row align="center">
-              <h2 cols="6" offset="4">{{ summary.Global.TotalDeaths }}</h2>
-
-              <!-- <v-col cols="6">
-                <v-img
-                  src="https://cdn.vuetifyjs.com/images/cards/sun.png"
-                  alt="Sunny image"
-                  width="92"
-                ></v-img>
-              </v-col> -->
+              <h2 cols="6" offset="4">{{ summary.TotalDeaths }}</h2>
             </v-row>
           </v-card-text>
         </v-card>
@@ -72,15 +56,8 @@
 
           <v-card-text>
             <v-row align="center">
-              <h2 cols="6" offset="4">{{ summary.Global.TotalRecovered }}</h2>
-
-              <!-- <v-col cols="6">
-                <v-img
-                  src="https://cdn.vuetifyjs.com/images/cards/sun.png"
-                  alt="Sunny image"
-                  width="92"
-                ></v-img>
-              </v-col> -->
+              <h2 cols="6" offset="4">{{ summary.TotalRecovered }}</h2>
+              <h3></h3>
             </v-row>
           </v-card-text>
         </v-card>
@@ -91,18 +68,19 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import AnimatedNumber from 'animated-number-vue';
 
 export default {
   name: 'SummaryCards',
-
+  data() {
+    return {
+      value: 1000,
+    };
+  },
   methods: {
     ...mapActions(['getSummary']),
   },
   computed: mapGetters(['summary']),
-  created() {
-    this.getSummary();
-  },
+  created() {},
 };
 </script>
 
