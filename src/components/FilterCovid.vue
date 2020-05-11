@@ -60,7 +60,13 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['getCountries', 'getSummary', 'getCountryInfo']),
+    ...mapActions([
+      'getCountries',
+      'getSummary',
+      'getCountryInfo',
+      'getdailyCountryRecords',
+    ]),
+
     changeCountry(country) {
       this.countryName = country;
 
@@ -68,15 +74,21 @@ export default {
 
       this.getSummary(country);
       this.getCountryInfo(myCountry.ISO2);
-      this.countryFlag = this.countryInfo.flag;
+      this.getdailyCountryRecords(myCountry.ISO2);
     },
   },
   computed: {
-    ...mapGetters(['countries', 'summary', 'countryInfo']),
+    ...mapGetters([
+      'countries',
+      'summary',
+      'countryInfo',
+      'dailyCountryRecords',
+    ]),
   },
   created() {
     this.getCountries();
     this.getSummary();
+    this.getdailyCountryRecords('GB');
   },
 };
 </script>

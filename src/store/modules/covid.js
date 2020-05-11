@@ -4,12 +4,14 @@ const state = {
   summary: {},
   countries: [],
   countryInfo: {},
+  dailyCountryRecords: [],
 };
 
 const getters = {
   summary: (state) => state.summary,
   countries: (state) => state.countries,
   countryInfo: (state) => state.countryInfo,
+  dailyCountryRecords: (state) => state.dailyCountryRecords,
 };
 
 const actions = {
@@ -22,7 +24,6 @@ const actions = {
 
         let summary = summaryData.find((o) => o.Country === byCountry);
 
-        console.log(summary);
         commit('setSummary', summary);
       } else {
         commit('setSummary', response.data.Global);
@@ -58,12 +59,45 @@ const actions = {
       console.log(err);
     }
   },
+
+  async getdailyCountryRecords({ commit }, byCountry) {
+    try {
+      const response = await axios.get(
+        `https://api.covid19api.com/total/dayone/country/${byCountry}`
+      );
+
+      const countryRecordsData = response.data;
+
+      const dailyCountryRecordsData = countryRecordsData.map(
+        (record, index, allRecords) => {
+          const previous = allRecords[index - 1] || {
+            Confirmed: 0,
+            Deaths: 0,
+          };
+
+          return {
+            ...record,
+            dailyCases: record.Confirmed - previous.Confirmed,
+            dailyDeaths: record.Deaths - previous.Deaths,
+          };
+        }
+      );
+
+      console.log(dailyCountryRecordsData);
+
+      commit('setDailyCountryRecords', dailyCountryRecordsData);
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
 
 const mutations = {
   setSummary: (state, summary) => (state.summary = summary),
   setCountries: (state, countries) => (state.countries = countries),
   setCountryInfo: (state, countryInfo) => (state.countryInfo = countryInfo),
+  setDailyCountryRecords: (state, dailyCountryRecords) =>
+    (state.dailyCountryRecords = dailyCountryRecords),
 };
 
 export default {
