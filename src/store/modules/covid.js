@@ -88,8 +88,6 @@ const actions = {
         rows: dailyCountryRecordsData,
       };
 
-      console.log(chartData);
-
       commit('setDailyCountryRecords', chartData);
     } catch (err) {
       console.log(err);

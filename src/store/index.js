@@ -6,7 +6,6 @@ import covid from './modules/covid';
 Vue.use(Vuex);
 
 //Create Store
-
 export default new Vuex.Store({
   modules: {
     covid,

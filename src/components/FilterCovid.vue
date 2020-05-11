@@ -69,9 +69,7 @@ export default {
 
     changeCountry(country) {
       this.countryName = country;
-
       let myCountry = this.countries.find((o) => o.Country === country);
-
       this.getSummary(country);
       this.getCountryInfo(myCountry.ISO2);
       this.getdailyCountryRecords(myCountry.ISO2);
@@ -88,10 +86,6 @@ export default {
   created() {
     this.getCountries();
     this.getSummary();
-    this.getdailyCountryRecords('GB');
   },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>

@@ -45,9 +45,5 @@ export default {
     SummaryCards,
     SummaryChart,
   },
-
-  data: () => ({
-    //
-  }),
 };
 </script>
