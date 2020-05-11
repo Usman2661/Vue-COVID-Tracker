@@ -9,7 +9,6 @@
         sm="6"
         offset-sm="3"
         xs="12"
-        offset-xs="0"
       >
         <v-autocomplete
           v-on:change="changeCountry"
@@ -27,15 +26,15 @@
       <v-col
         lg="2"
         offset-lg="5"
-        md="4"
-        offset-md="4"
+        md="2"
+        offset-md="5"
         sm="6"
         offset-sm="3"
-        xs="12"
-        offset-xs="0"
+        xs="6"
+        offset-xs="3"
       >
         <div style="display: flex">
-          <h1>{{ this.countryName }} -</h1>
+          <h1>{{ this.countryName }}</h1>
           <v-img
             height="50px"
             width="60px"
@@ -51,6 +50,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import SummaryChart from './SummaryChart.vue';
 
 export default {
   name: 'FilterCovid',

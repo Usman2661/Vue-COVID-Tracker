@@ -4,7 +4,7 @@ const state = {
   summary: {},
   countries: [],
   countryInfo: {},
-  dailyCountryRecords: [],
+  dailyCountryRecords: {},
 };
 
 const getters = {
@@ -83,9 +83,14 @@ const actions = {
         }
       );
 
-      console.log(dailyCountryRecordsData);
+      const chartData = {
+        columns: ['Date', 'dailyCases', 'dailyDeaths'],
+        rows: dailyCountryRecordsData,
+      };
 
-      commit('setDailyCountryRecords', dailyCountryRecordsData);
+      console.log(chartData);
+
+      commit('setDailyCountryRecords', chartData);
     } catch (err) {
       console.log(err);
     }

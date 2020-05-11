@@ -4,20 +4,14 @@
       <v-col
         lg="6"
         offset-lg="3"
-        md="4"
-        offset-md="4"
-        sm="6"
-        offset-sm="3"
+        md="9"
+        offset-md="2"
+        sm="12"
         xs="12"
         offset-xs="0"
       >
-        <div class="my-2">
-          <v-btn @click="checkChartData()" large color="primary"
-            >Check chart data</v-btn
-          >
-        </div>
         <ve-histogram
-          :data="chartData"
+          :data="this.dailyCountryRecords"
           :settings="chartSettings"
         ></ve-histogram>
       </v-col>
@@ -26,6 +20,7 @@
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'SummaryChart',
   data() {
@@ -40,21 +35,7 @@ export default {
       },
     };
   },
-  methods: {
-    checkChartData() {
-      console.log(this.dailyCountryRecords);
-      console.log(this.chartData);
-      this.chartData.rows = this.dailyCountryRecords;
-
-      console.log(this.chartData.rows);
-    },
-  },
   computed: mapGetters(['dailyCountryRecords']),
-  created() {
-    // console.log(this.chartData);
-    // console.log(this.chartData.rows);
-    // console.log(this.dailyCountryRecords);
-  },
 };
 </script>
 <style lang="stylus" scoped></style>
