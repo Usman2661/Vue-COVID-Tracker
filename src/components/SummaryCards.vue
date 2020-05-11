@@ -9,7 +9,7 @@
                 >Total Cases</v-list-item-title
               >
               <v-list-item-subtitle
-                >Patient confirmed with COVID-19</v-list-item-subtitle
+                >Patients confirmed with COVID-19</v-list-item-subtitle
               >
             </v-list-item-content>
           </v-list-item>
@@ -35,7 +35,7 @@
                 >Total Deaths</v-list-item-title
               >
               <v-list-item-subtitle
-                >Patient Died from COVID-19</v-list-item-subtitle
+                >Patients Died from COVID-19</v-list-item-subtitle
               >
             </v-list-item-content>
           </v-list-item>
@@ -61,7 +61,7 @@
                 >Total Recovered</v-list-item-title
               >
               <v-list-item-subtitle
-                >Patient Recovered from COVID-19</v-list-item-subtitle
+                >Patients Recovered from COVID-19</v-list-item-subtitle
               >
             </v-list-item-content>
           </v-list-item>

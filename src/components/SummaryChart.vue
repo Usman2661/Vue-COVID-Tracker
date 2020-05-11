@@ -27,6 +27,10 @@ export default {
     this.chartSettings = {
       metrics: ['dailyCases', 'dailyDeaths'],
       dimension: ['Date'],
+      labelMap: {
+        dailyCases: 'Cases',
+        dailyDeaths: 'Deaths',
+      },
     };
     return {
       chartData: {
